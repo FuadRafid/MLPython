@@ -16,12 +16,10 @@ y = np.reshape(y, [m, 1])
 ones = np.ones([m, 1])
 X, mu, sigma = feature_normalize(x)
 x = np.hstack([ones, x])
-X= np.hstack([ones, X])
+X = np.hstack([ones, X])
 theta = np.zeros([n, 1])
 alpha = 0.01
 iterations = 400
-
-
 
 cost = cost_function_j(X, y, theta)
 print('Cost', cost)
@@ -34,5 +32,5 @@ print('Price of 1650 sq ft and 3 bedroom house: ', predict([[1653, 3]], thetaRes
 thetaRes = normal_equation(x, y)
 print('Theta using normal equation: \n', thetaRes)
 
-cost=thetaRes.T @np.array([[1],[1650],[3]])
-print('Price of 1650 sq ft and 3 bedroom house: ',cost[0][0] )
+cost = thetaRes.T @ np.array([[1], [1650], [3]])
+print('Price of 1650 sq ft and 3 bedroom house: ', cost[0][0])

@@ -14,7 +14,7 @@ def cost_function_regularized(theta, X, y, Lambda):
     sigmoid_x_theta = sigmoid(X.dot(theta))
     grad = ((np.transpose(X)).dot(sigmoid_x_theta - y)) / m
     grad = grad + (Lambda / m) * theta
-    grad[0,0] = ((np.transpose(X[:,0])).dot(sigmoid_x_theta - y)) / m
+    grad[0, 0] = ((np.transpose(X[:, 0])).dot(sigmoid_x_theta - y)) / m
     return j, grad.flatten()
 
 
@@ -29,9 +29,8 @@ def cost_function_regularized_optimization(theta, X, y):
     regularization = (Lambda / (2 * m)) * sum(theta[1:, :] ** 2)
     j = j_unregularized + regularization
 
-   
     sigmoid_x_theta = sigmoid(X.dot(theta))
     grad = ((np.transpose(X)).dot(sigmoid_x_theta - y)) / m
-    grad=grad + (Lambda/m) * theta
+    grad = grad + (Lambda / m) * theta
     grad[0, 0] = ((np.transpose(X[:, 0])).dot(sigmoid_x_theta - y)) / m
     return j, grad.flatten()

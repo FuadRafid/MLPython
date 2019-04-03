@@ -1,6 +1,6 @@
 from Coursera.Exercise2.ConstFunctionReg import cost_function_regularized
 from Coursera.Exercise2.PlotBoundary import plot_decision_boundary
-from Coursera.Exercise2.Plotdata import plot_data,show_plot
+from Coursera.Exercise2.Plotdata import plot_data, show_plot
 from Coursera.Exercise2.CostFunction import cost_function, gradient
 import MLBasics as ML
 import numpy as np
@@ -29,11 +29,11 @@ print('Theta Result with [-24; 0.2; 0.2]:\n', gradient(test_theta, x, y))
 
 Result = op.minimize(fun=cost_function, x0=theta, args=(x, y), method='TNC', jac=gradient)
 optimal_theta = Result.x
-print('Optimal theta: ',optimal_theta)
+print('Optimal theta: ', optimal_theta)
 
-optimal_theta=np.resize(optimal_theta,[optimal_theta.shape[0],1])
+optimal_theta = np.resize(optimal_theta, [optimal_theta.shape[0], 1])
 res = x @ optimal_theta
-res[res >= 0.5] =1
-res[res <= 0.5] =0
-print('Accuracy: ',np.mean(((res==y).flatten()))*100)
-plot_decision_boundary(optimal_theta,x,y)
+res[res >= 0.5] = 1
+res[res <= 0.5] = 0
+print('Accuracy: ', np.mean(((res == y).flatten())) * 100)
+plot_decision_boundary(optimal_theta, x, y)
