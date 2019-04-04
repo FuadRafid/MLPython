@@ -6,6 +6,9 @@ import MLBasics as ML
 import numpy as np
 import scipy.optimize as op
 
+from Coursera.Exercise2.Predict import predict
+from Coursera.Exercise2.Sigmoid import sigmoid
+
 data = np.loadtxt("data/ex2data1.txt", delimiter=',')
 n = np.size(data, 1)
 x = data[:, range(n - 1)]
@@ -31,9 +34,6 @@ Result = op.minimize(fun=cost_function, x0=theta, args=(x, y), method='TNC', jac
 optimal_theta = Result.x
 print('Optimal theta: ', optimal_theta)
 
-optimal_theta = np.resize(optimal_theta, [optimal_theta.shape[0], 1])
-res = x @ optimal_theta
-res[res >= 0.5] = 1
-res[res <= 0.5] = 0
-print('Accuracy: ', np.mean(((res == y).flatten())) * 100)
+res=predict(optimal_theta,x)
+print(np.mean(((res == y).flatten())) * 100)
 plot_decision_boundary(optimal_theta, x, y)

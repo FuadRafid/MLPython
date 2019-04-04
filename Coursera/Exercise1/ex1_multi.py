@@ -1,5 +1,5 @@
 import numpy as np
-
+import matplotlib.pyplot as plt
 from Coursera.Exercise1.CostFunction import cost_function_j
 from Coursera.Exercise1.FeatureNormalize import feature_normalize
 from Coursera.Exercise1.GradientDescent import gradient_descent
@@ -24,10 +24,17 @@ iterations = 400
 cost = cost_function_j(X, y, theta)
 print('Cost', cost)
 
-thetaRes = gradient_descent(X, y, theta, alpha, iterations)
+thetaRes,j_hist = gradient_descent(X, y, theta, alpha, iterations)
 print('Theta using gradient descent:\n', thetaRes)
 
 print('Price of 1650 sq ft and 3 bedroom house: ', predict([[1653, 3]], thetaRes, mu, sigma))
+
+
+plt.plot(range(400),j_hist)
+plt.xlabel("No of iterations")
+plt.ylabel("Cost")
+plt.title("Gradient Descent")
+plt.show()
 
 thetaRes = normal_equation(x, y)
 print('Theta using normal equation: \n', thetaRes)

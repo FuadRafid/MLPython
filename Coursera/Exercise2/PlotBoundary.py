@@ -5,6 +5,8 @@ import numpy as np
 
 
 def plot_decision_boundary(theta, x, y):
+    theta = theta.flatten()
+    theta = np.resize(theta, [theta.shape[0], 1])
     if np.size(x, 1) <= 3:
         plot_data(x[:, 1:], y)
         plot_x = np.array([min(x[:, 1]) - 2, max(x[:, 1]) + 2])

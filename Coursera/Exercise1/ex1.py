@@ -20,11 +20,10 @@ x = np.hstack([ones, x])
 theta = np.zeros([n, 1])
 alpha = 0.01
 iterations = 1500
-
 cost = cost_function_j(x, y, theta)
 print('Cost', cost)
 
-thetaRes = gradient_descent(x, y, theta, alpha, iterations)
+thetaRes,j_hist = gradient_descent(x, y, theta, alpha, iterations)
 print(thetaRes)
 
 cost = cost_function_j(x, y, ML.str2arr('[-1;2]'))
