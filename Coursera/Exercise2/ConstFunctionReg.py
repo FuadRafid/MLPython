@@ -16,4 +16,4 @@ def cost_function_regularized(theta, X, y, Lambda):
     grad = ((np.transpose(X)).dot(sigmoid_x_theta - y)) / m
     grad = grad + (Lambda / m) * theta
     grad[0, 0] = ((np.transpose(X[:, 0])).dot(sigmoid_x_theta - y)) / m
-    return j, grad.flatten()
+    return j[0][0], grad.flatten()

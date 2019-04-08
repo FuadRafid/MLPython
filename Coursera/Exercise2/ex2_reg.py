@@ -21,14 +21,14 @@ x = map_features(x[:, 0], x[:, 1])
 theta = np.zeros([np.size(x, 1), 1])
 cost, theta_res = cost_function_regularized(theta, x, y, 1)
 
-print("Cost with theta [0;0;0]: ", cost[0][0])
+print("Cost with theta [0;0;0]: ", cost)
 print('Theta Result with [0;0;0]:\n', theta_res)
 
 
 test_theta = np.ones([np.size(x, 1), 1])
 cost, theta_res = cost_function_regularized(test_theta, x, y, 10)
 
-print("Cost with test theta : ", cost[0][0])
+print("Cost with test theta : ", cost)
 print('Theta Result with test theta:\n', theta_res)
 
 
@@ -40,5 +40,5 @@ optimal_theta = Result.x
 print('Optimal theta: ', optimal_theta)
 
 res=predict(optimal_theta,x)
-print(np.mean(((res == y).flatten())) * 100)
+print("Accuracy: ",np.mean(((res == y).flatten())) * 100)
 plot_decision_boundary(optimal_theta, x, y)
