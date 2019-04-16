@@ -8,6 +8,7 @@ from Coursera.Exercise5.LinearCostFunc import linear_reg_cost
 from Coursera.Exercise5.PlotFit import plot_fit
 from Coursera.Exercise5.PolyFeatures import poly_features
 from Coursera.Exercise5.TrainLinearReg import train_linear_reg
+from Coursera.Exercise5.ValidationCurve import validation_curve
 
 mat = loadmat("data/ex5data1.mat");
 X = mat["X"]
@@ -48,6 +49,8 @@ lmbda = 0
 error_train,error_val=learning_curve(x, y, Xval_ones, yval, lmbda)
 plt.plot(error_val, '-', color='red')
 plt.plot(error_train, '-', color='blue')
+plt.title("Leaning Curve")
+plt.legend(['error_val','error_train'])
 plt.ylabel("Error")
 plt.xlabel("No of samples")
 plt.show()
@@ -63,9 +66,13 @@ X_poly_test = poly_features(Xtest, p)
 X_poly_test=(X_poly_test-mu)/sigma
 
 
-print(Xval.shape)
 X_poly_val = poly_features(Xval, p)
 X_poly_val=(X_poly_val-mu)/sigma
+m_poly_val = np.size(X_poly_val,0)
+ones = np.ones([m_poly_val, 1])
+X_poly_val = np.hstack([ones, X_poly_val])
+
+
 
 print('Normalized Training Example 1:\n');
 print(x_poly[0, :])
@@ -76,4 +83,25 @@ plt.scatter(X, y,color='red')
 # plt.plot(x[:, 1], x_poly @ theta, '-', color='red')
 
 plot_fit(min(x[:, 1]),max(x[:, 1]),mu,sigma,theta,p)
+plt.title("Polynomial Features Fitting")
+plt.show()
+
+error_train,error_val=learning_curve(x_poly, y, X_poly_val, yval, lmbda)
+
+plt.plot(range(1,m+1),error_val, '-', color='red')
+plt.plot(range(1,m+1),error_train, '-', color='blue')
+plt.title("Learning Curve for Polynomial Features")
+plt.legend(['error_val','error_train'])
+plt.ylabel("Error")
+plt.xlabel("No of samples")
+plt.show()
+
+lambda_vec,error_train,error_val=validation_curve(x_poly, y, X_poly_val, yval)
+
+plt.plot(lambda_vec,error_val, '-', color='red')
+plt.plot(lambda_vec,error_train, '-', color='blue')
+plt.title("Lambda vs Error for Polynomial Features")
+plt.legend(['error_val','error_train'])
+plt.ylabel("Error")
+plt.xlabel("Lambda")
 plt.show()

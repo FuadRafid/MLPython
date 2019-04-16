@@ -5,5 +5,5 @@ def poly_features(x, p , plotfit = False):
         x=x.reshape(m,1)
     x_poly = np.array([]).reshape(m,0)
     for i in range(1, 1 + p):
-        x_poly=np.hstack([x_poly,(x ** i)])
+        x_poly=np.hstack([x_poly,np.power(x,i)])
     return x_poly

@@ -9,7 +9,7 @@ def feature_normalize(x):
 
     for i in range(m):
         mu[i] = np.mean(x[:, i])
-        sigma[i] = np.std(x[:, i], ddof=1)
+        sigma[i] = np.std(x[:, i])
 
 
     X_norm = X_norm - mu
