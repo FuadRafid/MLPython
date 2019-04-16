@@ -60,3 +60,23 @@ print(Theta2.shape)
 res=predict_nn(Theta1,Theta2,X)
 
 print("Accuracy on training set with Neural Network:", np.mean((res == y)) * 100)
+
+lmbda = 2
+options = {'maxiter': 100}
+result = op.minimize(fun=nn_cost_function, x0=nn_params_rand,
+                     args=(input_layer_size, hidden_layer_size, num_labels, X, y, lmbda),method='TNC',
+                     jac=True, options=options)
+optimal_theta = result.x
+
+Theta1 = optimal_theta[0: hidden_layer_size * (input_layer_size + 1)]
+Theta1 = np.reshape(Theta1, [hidden_layer_size, (input_layer_size + 1)])
+
+Theta2 = optimal_theta[hidden_layer_size * (input_layer_size + 1):]
+Theta2 = np.reshape(Theta2, [num_labels, (hidden_layer_size + 1)])
+
+print(Theta1.shape)
+print(Theta2.shape)
+
+res=predict_nn(Theta1,Theta2,X)
+
+print("Accuracy on training set with Neural Network:", np.mean((res == y)) * 100)
