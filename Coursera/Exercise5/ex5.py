@@ -37,16 +37,16 @@ print('Cost at theta = [1 ; 1]: %', J,
 print('Gradient at theta = [1 ; 1]: ', grad,
       '\n(this value should be about [-15.303016; 598.250744])\n')
 
-lmbda = 0
-theta = train_linear_reg(x, y, lmbda)
+lambda_value = 0
+theta = train_linear_reg(x, y, lambda_value)
 plt.scatter(X, y)
 plt.xlabel("Change in water level (x)")
 plt.ylabel("Water flowing out of dam (y)")
 plt.plot(x[:, 1], x @ theta, '-', color='red')
 plt.show()
 
-lmbda = 0
-error_train,error_val=learning_curve(x, y, Xval_ones, yval, lmbda)
+lambda_value = 0
+error_train,error_val=learning_curve(x, y, Xval_ones, yval, lambda_value)
 plt.plot(error_val, '-', color='red')
 plt.plot(error_train, '-', color='blue')
 plt.title("Leaning Curve")
@@ -77,8 +77,8 @@ X_poly_val = np.hstack([ones, X_poly_val])
 print('Normalized Training Example 1:\n');
 print(x_poly[0, :])
 
-lmbda = 0
-theta = train_linear_reg(x_poly, y, lmbda)
+lambda_value = 0
+theta = train_linear_reg(x_poly, y, lambda_value)
 plt.scatter(X, y,color='red')
 # plt.plot(x[:, 1], x_poly @ theta, '-', color='red')
 
@@ -86,7 +86,7 @@ plot_fit(min(x[:, 1]),max(x[:, 1]),mu,sigma,theta,p)
 plt.title("Polynomial Features Fitting")
 plt.show()
 
-error_train,error_val=learning_curve(x_poly, y, X_poly_val, yval, lmbda)
+error_train,error_val=learning_curve(x_poly, y, X_poly_val, yval, lambda_value)
 
 plt.plot(range(1,m+1),error_val, '-', color='red')
 plt.plot(range(1,m+1),error_train, '-', color='blue')

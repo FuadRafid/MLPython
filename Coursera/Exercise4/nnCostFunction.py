@@ -4,7 +4,7 @@ from Coursera.Exercise4.Sigmoid import sigmoid
 from Coursera.Exercise4.SigmoidGradient import sigmoid_gradient
 
 
-def nn_cost_function(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lmbda):
+def nn_cost_function(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lambda_value):
     m, n = X.shape
     Theta1 = nn_params[0: hidden_layer_size * (input_layer_size + 1)]
     Theta1 = np.reshape(Theta1, [hidden_layer_size, (input_layer_size + 1)])
@@ -37,7 +37,7 @@ def nn_cost_function(nn_params, input_layer_size, hidden_layer_size, num_labels,
     exp1 = -(y_t) * np.log((h))
     exp2 = -(1. - y_t) * np.log(1 - (h))
     j_unregularized = sum(sum(exp1 + exp2)) / m
-    regularization = (lmbda / (2 * m)) * (sum(sum(Theta1[:, 1:] ** 2)) + sum(sum(Theta2[:, 1:] ** 2)))
+    regularization = (lambda_value / (2 * m)) * (sum(sum(Theta1[:, 1:] ** 2)) + sum(sum(Theta2[:, 1:] ** 2)))
     j = j_unregularized + regularization
 
     d3 = a3 - y_t
@@ -52,8 +52,8 @@ def nn_cost_function(nn_params, input_layer_size, hidden_layer_size, num_labels,
     Theta1_grad = Theta1_grad / m
     Theta2_grad = Theta2_grad / m
 
-    reg_theta_1 = (lmbda / m) * Theta1[:, 1:]
-    reg_theta_2 = (lmbda / m) * Theta2[:, 1:]
+    reg_theta_1 = (lambda_value / m) * Theta1[:, 1:]
+    reg_theta_2 = (lambda_value / m) * Theta2[:, 1:]
 
     reg_theta_1 = np.hstack([np.zeros([np.size(Theta1, 0), 1]), reg_theta_1])
     reg_theta_2 = np.hstack([np.zeros([np.size(Theta2, 0), 1]), reg_theta_2])

@@ -28,9 +28,9 @@ cost, grad = cost_function_regularized(theta_t, X_t, y_t, lambda_t)
 print("Cost:", cost, "Expected cost: 2.534819")
 print("Gradients:\n", grad, "\nExpected gradients:\n 0.146561\n -0.548558\n 0.724722\n 1.398003")
 
-lmbda = 0.1
+lambda_value = 0.1
 num_labels = 10
-all_theta = one_vs_all(X, y, num_labels, lmbda)
+all_theta = one_vs_all(X, y, num_labels, lambda_value)
 res = predict_one_vs_all(all_theta, X)
 print("Accuracy on training set with OneVsAll:", np.mean((res == y)) * 100)
 

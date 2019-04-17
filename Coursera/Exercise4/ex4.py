@@ -24,15 +24,15 @@ nn_params = np.append(Theta1.flatten(), Theta2.flatten())
 input_layer_size = 400
 hidden_layer_size = 25
 num_labels = 10
-lmbda = 0
-cost = nn_cost_function(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lmbda)[0]
+lambda_value = 0
+cost = nn_cost_function(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lambda_value)[0]
 print(cost)
 
 input_layer_size = 400
 hidden_layer_size = 25
 num_labels = 10
-lmbda = 1
-cost = nn_cost_function(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lmbda)[0]
+lambda_value = 1
+cost = nn_cost_function(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lambda_value)[0]
 print(cost)
 
 initial_Theta1 = random_init_weights(input_layer_size, hidden_layer_size)
@@ -41,10 +41,10 @@ initial_Theta2 = random_init_weights(hidden_layer_size, num_labels)
 
 nn_params_rand = np.append(initial_Theta1.flatten(), initial_Theta2.flatten())
 
-lmbda = 1
+lambda_value = 1
 options = {'maxiter': 100}
 result = op.minimize(fun=nn_cost_function, x0=nn_params_rand,
-                     args=(input_layer_size, hidden_layer_size, num_labels, X, y, lmbda),method='TNC',
+                     args=(input_layer_size, hidden_layer_size, num_labels, X, y, lambda_value),method='TNC',
                      jac=True, options=options)
 optimal_theta = result.x
 
@@ -61,10 +61,10 @@ res=predict_nn(Theta1,Theta2,X)
 
 print("Accuracy on training set with Neural Network:", np.mean((res == y)) * 100)
 
-lmbda = 2
+lambda_value = 2
 options = {'maxiter': 100}
 result = op.minimize(fun=nn_cost_function, x0=nn_params_rand,
-                     args=(input_layer_size, hidden_layer_size, num_labels, X, y, lmbda),method='TNC',
+                     args=(input_layer_size, hidden_layer_size, num_labels, X, y, lambda_value),method='TNC',
                      jac=True, options=options)
 optimal_theta = result.x
 
