@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.io import loadmat
 
+
 from Coursera.Exercise8.EstimateGaussian import estimate_gaussian
 from Coursera.Exercise8.MutlivariateGaussian import multivariate_gaussian
 from Coursera.Exercise8.PlotData import visualize_fit

@@ -10,7 +10,7 @@ def visualize_fit(X, mu, sigma2):
     Z = multivariate_gaussian(np.stack([X1.ravel(), X2.ravel()], axis=1), mu, sigma2)
     Z = Z.reshape(X1.shape)
 
-    pyplot.scatter(X[:, 0], X[:, 1],color='green',marker='x')
+    pyplot.scatter(X[:, 0], X[:, 1],marker='x')
 
     if np.all(abs(Z) != np.inf):
         pyplot.contour(X1, X2, Z, levels=10**(np.arange(-20., 1, 3)), zorder=100)
