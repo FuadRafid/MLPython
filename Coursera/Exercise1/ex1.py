@@ -7,7 +7,10 @@ from Coursera.Exercise1.CostFunction import cost_function_j
 from Coursera.Exercise1.GradientDescent import gradient_descent
 from mpl_toolkits.mplot3d import Axes3D
 
-data = np.loadtxt("data/ex1data1.txt", delimiter=',')
+from utils.file_utils import FileUtils
+
+data_path = FileUtils.get_abs_path(__file__, "./data/ex1data1.txt")
+data = np.loadtxt(data_path, delimiter=',')
 n = np.size(data, 1)
 x = data[:, range(n - 1)]
 y = data[:, n - 1]

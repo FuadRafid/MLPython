@@ -5,15 +5,18 @@ import scipy.optimize as op
 from Coursera.Exercise4.NNPrediction import predict_nn
 from Coursera.Exercise4.RandomInitializeWeights import random_init_weights
 from Coursera.Exercise4.nnCostFunction import nn_cost_function
+from utils.file_utils import FileUtils
 
 np.set_printoptions(suppress=True)
-mat = loadmat("data/ex4data1.mat")
+data_path = FileUtils.get_abs_path(__file__, "./data/ex4data1.mat")
+mat = loadmat(data_path)
 X = mat["X"]
 y = mat["y"]
 X = np.array(X)
 y = np.array(y)
 
-mat2 = loadmat("data/ex4weights.mat")
+data_path = FileUtils.get_abs_path(__file__, "./data/ex4weights.mat")
+mat2 = loadmat(data_path)
 Theta1 = mat2['Theta1']
 Theta2 = mat2['Theta2']
 

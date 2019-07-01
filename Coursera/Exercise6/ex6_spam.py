@@ -4,9 +4,13 @@ from sklearn.svm import SVC
 
 from Coursera.Exercise6.EmailFeatures import email_features
 from Coursera.Exercise6.ProcessEmail import process_email
+from utils.file_utils import FileUtils
 
-file_contents = open("data/emailSample1.txt", "r").read()
-vocabList = open("data/vocab.txt", "r").read()
+file_path = FileUtils.get_abs_path(__file__, "./data/emailSample1.txt")
+vocab_path = FileUtils.get_abs_path(__file__, "./data/vocab.txt")
+
+file_contents = open(file_path, "r").read()
+vocabList = open(vocab_path, "r").read()
 
 vocabList = vocabList.split("\n")[:-1]
 
@@ -22,7 +26,9 @@ features = email_features(word_indices, vocabList_d)
 print("Length of feature vector: ", len(features))
 print("Number of non-zero entries: ", np.sum(features))
 
-spam_mat = loadmat("data/spamTrain.mat")
+
+spam_mat_path = FileUtils.get_abs_path(__file__, "./data/spamTrain.mat")
+spam_mat = loadmat(spam_mat_path)
 X_train = spam_mat["X"]
 y_train = spam_mat["y"]
 
@@ -31,13 +37,18 @@ spam_svc = SVC(C=0.1, kernel="linear")
 spam_svc.fit(X_train, y_train.ravel())
 print("Training Accuracy:", (spam_svc.score(X_train, y_train.ravel())) * 100, "%")
 
-spam_mat_test = loadmat("data/spamTest.mat")
+spam_mat_test_path = FileUtils.get_abs_path(__file__, "./data/spamTest.mat")
+spam_mat_test = loadmat(spam_mat_test_path)
 X_test = spam_mat_test["Xtest"]
 y_test = spam_mat_test["ytest"]
 
 print("Test Accuracy:", (spam_svc.score(X_test, y_test.ravel())) * 100, "%")
 
-file_contents = open("data/spamSample1.txt", "r").read()
+
+file_path = FileUtils.get_abs_path(__file__, "./data/spamSample1.txt")
+file_contents = open(file_path, "r").read()
+
+
 
 word_indices = process_email(file_contents, vocabList_d)
 features = email_features(word_indices, vocabList_d)

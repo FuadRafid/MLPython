@@ -5,8 +5,10 @@ import MLBasics as ML
 from Coursera.Exercise2.CostFunction import cost_function
 from Coursera.Exercise2.PlotBoundary import plot_decision_boundary
 from Coursera.Exercise2.Predict import predict
+from utils.file_utils import FileUtils
 
-data = np.loadtxt("data/ex2data1.txt", delimiter=',')
+data_path = FileUtils.get_abs_path(__file__, "./data/ex2data1.txt")
+data = np.loadtxt(data_path, delimiter=',')
 n = np.size(data, 1)
 x = data[:, range(n - 1)]
 y = data[:, n - 1]

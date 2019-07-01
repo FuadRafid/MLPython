@@ -3,8 +3,10 @@ from scipy.io import loadmat
 
 from Coursera.Exercise7.FeatureNormalize import feature_normalize
 from Coursera.Exercise7.PCA import pca, project_data, recover_data, project_data_optimal_K
+from utils.file_utils import FileUtils
 
-mat3 = loadmat("data/ex7data1.mat")
+data_path = FileUtils.get_abs_path(__file__, "./data/ex7data1.mat")
+mat3 = loadmat(data_path)
 X3 = mat3["X"]
 plt.scatter(X3[:, 0], X3[:, 1], marker="o", facecolors="none", edgecolors="b")
 
@@ -34,7 +36,8 @@ plt.title("The Normalized and Projected Data after PCA")
 plt.legend()
 plt.show()
 
-mat4 = loadmat("data/ex7faces.mat")
+data_path = FileUtils.get_abs_path(__file__, "./data/ex7faces.mat")
+mat4 = loadmat(data_path)
 X4 = mat4["X"]
 m, n = X4.shape
 print(n)

@@ -2,4 +2,5 @@
 out/
 *.iml
 venv/
+venvNew/
 __pycache__/

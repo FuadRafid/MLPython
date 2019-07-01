@@ -9,8 +9,10 @@ from Coursera.Exercise5.PlotFit import plot_fit
 from Coursera.Exercise5.PolyFeatures import poly_features
 from Coursera.Exercise5.TrainLinearReg import train_linear_reg
 from Coursera.Exercise5.ValidationCurve import validation_curve
+from utils.file_utils import FileUtils
 
-mat = loadmat("data/ex5data1.mat");
+data_path = FileUtils.get_abs_path(__file__, "./data/ex5data1.mat")
+mat = loadmat(data_path)
 X = mat["X"]
 y = mat["y"]
 Xval=mat["Xval"]

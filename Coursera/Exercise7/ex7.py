@@ -7,8 +7,11 @@ from Coursera.Exercise7.FindClosestCentroids import find_closest_centroids
 from Coursera.Exercise7.InitRandomCentroid import init_random_centroid
 from Coursera.Exercise7.PlotKmeans import plot_kmeans
 from Coursera.Exercise7.RunKmeans import run_kmeans
+from utils.file_utils import FileUtils
 
-mat = loadmat("data/ex7data2.mat")
+
+data_path = FileUtils.get_abs_path(__file__, "./data/ex7data2.mat")
+mat = loadmat(data_path)
 X = mat["X"]
 K = 3
 initial_centroids = np.array([[3, 3], [6, 2], [8, 5]])
@@ -23,7 +26,9 @@ idx = find_closest_centroids(X, initial_centroids)
 plot_kmeans(X, initial_centroids, idx, K, 10)
 plt.show()
 
-A = plt.imread('data/bird_small.png')
+
+data_path = FileUtils.get_abs_path(__file__, "./data/bird_small.png")
+A = plt.imread(data_path)
 A /= 255
 img_size1, img_size2, rgb = A.shape
 X2 = A.reshape(img_size1 * img_size2, 3)

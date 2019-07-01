@@ -5,9 +5,15 @@ from scipy.io import loadmat
 
 from Coursera.Exercise8.CofiCostFunction import cofi_cost_function
 from Coursera.Exercise8.NormalizeRatings import normalize_ratings
+from utils.file_utils import FileUtils
 
-mat3 = loadmat("data/ex8_movies.mat")
-mat4 = loadmat("data/ex8_movieParams.mat")
+data_path = FileUtils.get_abs_path(__file__, "./data/ex8_movies.mat")
+mat3 = loadmat(data_path)
+
+data_path = FileUtils.get_abs_path(__file__, "./data/ex8_movieParams.mat")
+mat4 = loadmat(data_path)
+
+
 Y = mat3["Y"] # 1682 X 943 matrix, containing ratings (1-5) of 1682 movies on 943 user
 R = mat3["R"] # 1682 X 943 matrix, where R(i,j) = 1 if and only if user j give rating to movie i
 X = mat4["X"] # 1682 X 10 matrix , num_movies X num_features matrix of movie features
@@ -28,7 +34,10 @@ J2, grad2 = cofi_cost_function(params, Y_test, R_test, num_users, num_movies, nu
 print("Cost at loaded parameters (lambda = 1.5):",J2)
 # load movie list
 
-movieList = open("data/movie_ids.txt","r").read().split("\n")[:-1]
+
+data_path = FileUtils.get_abs_path(__file__, "./data/movie_ids.txt")
+
+movieList = open(data_path,"r").read().split("\n")[:-1]
 # see movie list
 
 # Initialize my ratings

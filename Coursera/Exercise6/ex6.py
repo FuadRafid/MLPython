@@ -6,8 +6,10 @@ from Coursera.Exercise6.Dataset3params import dataset_3_params
 from Coursera.Exercise6.GaussianKernel import gaussian_kernel
 from Coursera.Exercise6.PlotData import plot_data
 from Coursera.Exercise6.PlotSVC import plot_svc
+from utils.file_utils import FileUtils
 
-mat = loadmat("data/ex6data1.mat")
+data_path = FileUtils.get_abs_path(__file__, "./data/ex6data1.mat")
+mat = loadmat(data_path)
 X = mat["X"]
 y = mat["y"]
 
@@ -24,7 +26,8 @@ sigma = 2
 
 print(gaussian_kernel(x1, x2, sigma))
 
-data2 = loadmat('data/ex6data2.mat')
+data_path = FileUtils.get_abs_path(__file__, "./data/ex6data2.mat")
+data2 = loadmat(data_path)
 
 y2 = data2['y']
 X2 = data2['X']
@@ -35,7 +38,8 @@ clf2 = SVC(kernel='rbf', gamma=30)
 clf2.fit(X2, y2.ravel())
 plot_svc(clf2, X2)
 
-data3 = loadmat('data/ex6data3.mat')
+data_path = FileUtils.get_abs_path(__file__, "./data/ex6data3.mat")
+data3 = loadmat(data_path)
 X3 = data3["X"]
 y3 = data3["y"]
 Xval = data3["Xval"]

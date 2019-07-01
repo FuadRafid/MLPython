@@ -7,8 +7,10 @@ from Coursera.Exercise8.EstimateGaussian import estimate_gaussian
 from Coursera.Exercise8.MutlivariateGaussian import multivariate_gaussian
 from Coursera.Exercise8.PlotData import visualize_fit
 from Coursera.Exercise8.SelectThreshold import select_threshold
+from utils.file_utils import FileUtils
 
-mat = loadmat("data/ex8data1.mat")
+data_path = FileUtils.get_abs_path(__file__, "./data/ex8data1.mat")
+mat = loadmat(data_path)
 X = mat["X"]
 Xval = mat["Xval"]
 yval = mat["yval"]
