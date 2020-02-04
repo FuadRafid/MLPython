@@ -9,4 +9,5 @@ Feel free to use these codes as reference
 <pre> python run.p [exercise_name] </pre>
 Such as: <br>
 <pre> python run.py ex1 </pre>
-Please open run.py to find exercise_name.
+- For help and to get all [exercise_name]:
+<pre> python run.py help </pre>

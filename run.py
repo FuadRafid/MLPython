@@ -57,7 +57,11 @@ if __name__ == "__main__":
 
     elif script_type == 'ex8_movies':
         ex8_movies.run()
-
+    
+    elif script_type == 'help':
+        print("Valid exercise names are - ex1 | ex1_multi | ex2 | ex2_reg | ex3 | ex3_nn | ex4 |ex5 | "
+              "ex6 | ex6_spam | ex7 | ex7_pca | ex8 | ex8_movies")
+              
     else:
-        print("invalid script name. Valid names are - ex1 | ex1_multi | ex2 | ex2_reg | ex3 | ex3_nn | ex4 |ex5 | "
+        print("invalid script name. Valid exercise names are - ex1 | ex1_multi | ex2 | ex2_reg | ex3 | ex3_nn | ex4 |ex5 | "
               "ex6 | ex6_spam | ex7 | ex7_pca | ex8 | ex8_movies")
