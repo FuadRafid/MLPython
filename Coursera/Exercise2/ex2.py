@@ -1,10 +1,10 @@
 import numpy as np
 import scipy.optimize as op
 
-import MLBasics as ML
 from Coursera.Exercise2.CostFunction import cost_function
 from Coursera.Exercise2.PlotBoundary import plot_decision_boundary
 from Coursera.Exercise2.Predict import predict
+from utils.String2NpArray import str2arr
 from utils.file_utils import FileUtils
 
 
@@ -25,7 +25,7 @@ def run():
     print("Cost with theta [0;0;0]: ", cost)
     print('Theta Result with [0;0;0]:\n', grad)
 
-    test_theta = ML.str2arr('[-24; 0.2; 0.2]')
+    test_theta = str2arr('[-24; 0.2; 0.2]')
     cost,grad = cost_function(test_theta, x, y)
 
     print("Cost with theta [-24; 0.2; 0.2]: ", cost)

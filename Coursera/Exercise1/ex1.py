@@ -1,9 +1,9 @@
+from utils.String2NpArray import str2arr
 from utils.file_utils import FileUtils
 import matplotlib.pyplot as plt
 import numpy as np
 
 import Coursera.Exercise1.plotData as pltData
-import MLBasics as ML
 from Coursera.Exercise1.CostFunction import cost_function_j
 from Coursera.Exercise1.GradientDescent import gradient_descent
 from mpl_toolkits.mplot3d import Axes3D
@@ -32,7 +32,7 @@ def run():
     thetaRes,j_hist = gradient_descent(x, y, theta, alpha, iterations)
     print(thetaRes)
 
-    cost = cost_function_j(x, y, ML.str2arr('[-1;2]'))
+    cost = cost_function_j(x, y, str2arr('[-1;2]'))
     print(cost)
 
     theta0_vals = np.linspace(-10, 10, 100)

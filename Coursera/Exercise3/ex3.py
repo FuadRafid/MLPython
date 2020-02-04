@@ -1,10 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.io import loadmat
-import MLBasics as ML
 from Coursera.Exercise3.LrCostFunction import cost_function_regularized
 from Coursera.Exercise3.OneVsAll import one_vs_all
 from Coursera.Exercise3.PredictOneVsAll import predict_one_vs_all
+from utils.String2NpArray import str2arr
 from utils.file_utils import FileUtils
 
 
@@ -24,10 +24,10 @@ def run():
             axis[i, j].axis("off")
     plt.show()
 
-    theta_t = ML.str2arr('[-2; -1; 1; 2]')
+    theta_t = str2arr('[-2; -1; 1; 2]')
     X_t = np.array([np.linspace(0.1, 1.5, 15)]).reshape(3, 5).T
     X_t = np.hstack((np.ones((5, 1)), X_t))
-    y_t = (ML.str2arr('[1;0;1;0;1]'))
+    y_t = (str2arr('[1;0;1;0;1]'))
     lambda_t = 3
     cost, grad = cost_function_regularized(theta_t, X_t, y_t, lambda_t)
 
