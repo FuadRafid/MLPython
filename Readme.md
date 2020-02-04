@@ -5,7 +5,7 @@ Feel free to use these codes as reference
 - install python (3.7 preferred)
 - To install all dependencies, run this command on the project directory:
 <pre> pip install -r requirements.txt </pre>
-- To run:
+- To run a particular exercise, run this command on the project directory:
 <pre> python run.p [exercise_name] </pre>
 Such as: <br>
 <pre> python run.py ex1 </pre>
