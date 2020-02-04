@@ -6,7 +6,7 @@ Feel free to use these codes as reference
 - To install all dependencies, run this command on the project directory:
 <pre> pip install -r requirements.txt </pre>
 - To run:
-<pre> python run.py <exercise_name> </pre>
+<pre> python run.p [exercise_name] </pre>
 Such as: <br>
 <pre> python run.py ex1 </pre>
 Please open run.py to find exercise_name.
